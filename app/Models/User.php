@@ -49,6 +49,11 @@ class User extends Authenticatable
     {
         return $this->type_id == 1  ? true : false;
     }
+    //  Get Admins
+    public function scopeSuperAdmins($query)
+    {
+        return $query->where('type_id', 1);
+    }
     //  Admin
     //  Get Admins
     public function scopeAdmins($query)
