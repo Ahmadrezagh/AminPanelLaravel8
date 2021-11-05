@@ -41,7 +41,7 @@ Login
                                             <button class="btn ripple btn-main-primary btn-block">Sign In</button>
                                         </form>
                                         <div class="text-left mt-5 ml-0">
-                                            <div class="mb-1"><a href="{{ route('password.request') }}">Forgot password?</a></div>
+{{--                                            <div class="mb-1"><a href="{{ route('password.request') }}">Forgot password?</a></div>--}}
                                             <div>Don't have an account? <a href="{{route('register')}}">Register Here</a></div>
                                         </div>
                                     </div>

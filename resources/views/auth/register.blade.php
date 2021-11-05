@@ -4,105 +4,63 @@
 @endsection
 @section('content')
 
-    <div class="register-box">
-        <div class="register-logo">
-            <a href="#"><b>Register</b> Page</a>
-        </div>
+    <!-- Page -->
+    <div class="page main-signin-wrapper">
 
-        <div class="card">
-            <div class="card-body register-card-body">
-                <p class="login-box-msg">Register a new membership</p>
-
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Full name" autofocus>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+        <!-- Row -->
+        <div class="row signpages text-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="row row-sm">
+                        <div class="col-lg-6 col-xl-5 d-none d-lg-block text-center bg-primary details">
+                            <div class="mt-5 pt-5 p-2 pos-absolute">
+                                <div class="clearfix"></div>
+                                <img src="{{url('panel/assets/img/svgs/user.svg')}}" class="ht-100 mb-0" alt="user">
+                                <h5 class="mt-4 text-white">Create Your Account</h5>
+                                <span class="tx-white-6 tx-13 mb-5 mt-xl-0">Signup to create, discover and connect with the global community</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="Email" autocomplete="email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password" autocomplete="new-password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Retype password" autocomplete="new-password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input onclick="validate()" type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                <label for="agreeTerms">
-                                    I agree to the <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">terms</a>
-                                </label>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Terms of use</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                        <div class="col-lg-6 col-xl-7 col-xs-12 col-sm-12 login_form ">
+                            <div class="container-fluid">
+                                <div class="row row-sm">
+                                    <div class="card-body mt-2 mb-2">
+                                        <img src="{{url('panel/assets/img/brand/logo.png')}}" class=" d-lg-none header-brand-img text-left float-left mb-4" alt="logo">
+                                        <div class="clearfix"></div>
+                                        <h5 class="text-left mb-2">Signup for Free</h5>
+                                        <p class="mb-4 text-muted tx-13 ml-0 text-left">It's free to signup and only takes a minute.</p>
+                                        <form method="POST" action="{{ route('register') }}">
+                                            @csrf
+                                            <div class="form-group text-left">
+                                                <label>Name</label>
+                                                <input class="form-control" placeholder="Enter your Name" name="name" type="text">
                                             </div>
-                                            <div class="modal-body">
-                                                {!! setting('terms') !!}
+                                            <div class="form-group text-left">
+                                                <label>Email</label>
+                                                <input class="form-control" placeholder="Enter your email" name="email" type="text">
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+                                            <div class="form-group text-left">
+                                                <label>Password</label>
+                                                <input class="form-control" placeholder="Enter your password" name="password" type="password">
                                             </div>
+                                            <div class="form-group text-left">
+                                                <label>Password Confirmation</label>
+                                                <input class="form-control" placeholder="Enter your password" name="password_confirmation" type="password">
+                                            </div>
+                                            <button class="btn ripple btn-main-primary btn-block" type="submit">Create Account</button>
+                                        </form>
+                                        <div class="text-left mt-5 ml-0">
+                                            <p class="mb-0">Already have an account? <a href="{{route('login')}}">Login</a></p>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button id="btnSubmit" type="submit" disabled class="btn btn-primary btn-block dsible">Register</button>
-                        </div>
-                        <!-- /.col -->
                     </div>
-                </form>
-
-
-                <a href="{{URL::to('/')}}/login" class="text-center">I already have a membership</a>
-
-
+                </div>
             </div>
-            <!-- /.form-box -->
-        </div><!-- /.card -->
-    </div>
+        </div>
+        <!-- End Row -->
 
-    <!-- /.register-box -->
-    <script>
-        function validate() {
-            if ($('#agreeTerms').is(':checked')) {
-                $('#btnSubmit').removeAttr("disabled");
-            } else {
-                $("#btnSubmit").attr("disabled", true);
-            }
-        }
-    </script>
+    </div>
+    <!-- End Page -->
 @endsection
