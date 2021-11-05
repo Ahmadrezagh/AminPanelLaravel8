@@ -1,34 +1,81 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>
-      @yield('title')
-  </title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{URL::to('/')}}/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{URL::to('/')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{URL::to('/')}}/dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="description" content="Spruha -  Admin Panel laravel Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content="admin laravel template, template laravel admin, laravel css template, best admin template for laravel, laravel blade admin template, template admin laravel, laravel admin template bootstrap 4, laravel bootstrap 4 admin template, laravel admin bootstrap 4, admin template bootstrap 4 laravel, bootstrap 4 laravel admin template, bootstrap 4 admin template laravel, laravel bootstrap 4 template, bootstrap blade template, laravel bootstrap admin template">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{url('panel/assets/img/brand/favicon.ico')}}" type="image/x-icon"/>
+
+    <!-- Title -->
+    <title>@yield('title')</title>
+
+    <!-- Bootstrap css-->
+    <link href="{{url('panel/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
+
+    <!-- Icons css-->
+    <link href="{{url('panel/assets/plugins/web-fonts/icons.css')}}" rel="stylesheet"/>
+    <link href="{{url('panel/assets/plugins/web-fonts/font-awesome/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/plugins/web-fonts/plugin.css')}}" rel="stylesheet"/>
+
+    <!-- Style css-->
+    <link href="{{url('panel/assets/css/style/style.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/css/skins.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/css/dark-style.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/css/colors/default.css')}}" rel="stylesheet">
+
+
+    <!-- Color css-->
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{url('panel/assets/css/colors/color.css')}}">
+
+    <!-- Switcher css-->
+    <link href="{{url('panel/assets/switcher/css/switcher.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/switcher/demo.css')}}" rel="stylesheet">
+
+
+
 </head>
-<body class="hold-transition login-page">
+
+<body class="main-body leftmenu">
+
+
+<!-- End Switcher -->
+
+<!-- Loader -->
+<div id="global-loader">
+    <img src="{{url('panel/assets/img/loader.svg')}}" class="loader-img" alt="Loader">
+</div>
+<!-- End Loader -->
+
+
 @yield('content')
 
-<!-- jQuery -->
-<script src="{{URL::to('/')}}/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{URL::to('/')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{URL::to('/')}}/dist/js/adminlte.min.js"></script>
+<!-- Jquery js-->
+<script src="{{url('panel/assets/plugins/jquery/jquery.min.js')}}"></script>
+
+<!-- Bootstrap js-->
+<script src="{{url('panel/assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{url('panel/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+
+<!-- Select2 js-->
+<script src="{{url('panel/assets/plugins/select2/js/select2.min.js')}}"></script>
+
+
+<!-- Custom js -->
+<script src="{{url('panel/assets/js/custom.js')}}"></script>
+
+<!-- Switcher js -->
+<script src="{{url('panel/assets/switcher/js/switcher.js')}}"></script>
+
+
+
 
 </body>
+
 </html>

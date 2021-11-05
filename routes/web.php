@@ -21,7 +21,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         // Amin routes
-        Route::resource('admin', 'Admin\AdminController');
+        Route::resource('admins', 'Admin\AdminController');
         Route::resource('roles', 'Admin\RoleController');
         Route::resource('categories', 'Admin\CategoryController');
         Route::resource('users', 'Admin\UserController');

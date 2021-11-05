@@ -1,377 +1,660 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="description" content="Spruha -  Admin Panel laravel Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content="admin laravel template, template laravel admin, laravel css template, best admin template for laravel, laravel blade admin template, template admin laravel, laravel admin template bootstrap 4, laravel bootstrap 4 admin template, laravel admin bootstrap 4, admin template bootstrap 4 laravel, bootstrap 4 laravel admin template, bootstrap 4 admin template laravel, laravel bootstrap 4 template, bootstrap blade template, laravel bootstrap admin template">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{url('panel/assets/img/brand/favicon.ico')}}" type="image/x-icon"/>
+
+    <!-- Title -->
     <title>{{setting('name')}} @if (trim($__env->yieldContent('title'))) | @yield('title')@endif</title>
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{URL::to('/').'/plugins/fontawesome-free/css/all.min.css'}}">
+    <!-- Bootstrap css-->
+    <link href="{{url('panel/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
 
-    <!-- Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{URL::to('/').'/dist/css/adminlte.min.css'}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- Image_uploader -->
-    <link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/image_uploader/image_uploader.min.css">
+    <!-- Icons css-->
+    <link href="{{url('panel/assets/plugins/web-fonts/icons.css')}}" rel="stylesheet"/>
+    <link href="{{url('panel/assets/plugins/web-fonts/font-awesome/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/plugins/web-fonts/plugin.css')}}" rel="stylesheet"/>
+
+    <!-- Style css-->
+    <link href="{{url('panel/assets/css/style/style.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/css/skins.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/css/dark-style.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/css/colors/default.css')}}" rel="stylesheet">
+
+    <!-- Color css-->
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{url('panel/assets/css/colors/color.css')}}">
+
+    <!-- Select2 css-->
+    <link href="{{url('panel/assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+
+    <!-- Mutipleselect css-->
+    <link rel="stylesheet" href="{{url('panel/assets/plugins/multipleselect/multiple-select.css')}}">
+
+    <!-- Sidemenu css-->
+    <link href="{{url('panel/assets/css/sidemenu/sidemenu.css')}}" rel="stylesheet">
+
+    <!-- Switcher css-->
+    <link href="{{url('panel/assets/switcher/css/switcher.css')}}" rel="stylesheet">
+    <link href="{{url('panel/assets/switcher/demo.css')}}" rel="stylesheet">
+    <!-- CkEditor -->
+    <script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
     <!-- Include this in your blade layout -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- CK Editor -->
-    <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
-
-    <!-- Tags input -->
-{{--    <link rel="stylesheet" href="{{URL::to('/')}}/tagsinput/dist/bootstrap-tagsinput.css">--}}
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
-
-    <style>
-        .bootstrap-tagsinput {
-            width: 100%;
-            line-height: 25px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        .bootstrap-tagsinput .tag{
-            background-color: rgb(52, 58, 64);
-            padding: 4px;
-            margin: 5px;
-            border-radius: 7px;
-            border: none;
-        }
-    </style>
+    <!-- Toastr css -->
+    @toastr_css
 </head>
-<body class="hold-transition sidebar-mini">
+
+<body class="main-body leftmenu">
 @include('sweet::alert')
-<div class="wrapper">
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('home')}}" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
-        </ul>
+<!-- Loader -->
+<div id="global-loader">
+    <img src="{{url('panel/assets/img/loader.svg')}}" class="loader-img" alt="Loader">
+</div>
+<!-- End Loader -->
 
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+<!-- Page -->
+<div class="page">
+
+    <!-- Sidemenu -->
+    <div class="main-sidebar main-sidebar-sticky side-menu">
+        <div class="sidemenu-logo">
+            <a class="main-logo" href="{{url('/')}}">
+                <img src="{{url(setting('logo'))}}" class="header-brand-img desktop-logo" alt="logo" style="max-height: 52px">
+                <img src="{{url(setting('logo'))}}" class="header-brand-img icon-logo" alt="logo" style="max-height: 52px">
+                <img src="{{url(setting('logo'))}}" class="header-brand-img desktop-logo theme-logo" alt="logo" style="max-height: 52px">
+                <img src="{{url(setting('logo'))}}" class="header-brand-img icon-logo theme-logo" alt="logo" style="max-height: 52px">
+            </a>
+        </div>
+        <div class="main-sidebar-body">
+            <ul class="nav">
+                <li class="nav-header"><span class="nav-label">Dashboard</span></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('home')}}"><span class="shape1"></span><span class="shape2"></span><i class="ti-home sidemenu-icon"></i><span class="sidemenu-label">Home</span></a>
+                </li>
+                @if ((Auth::user()->isAdmin() && Auth::user()->can('Admin')) || Auth::user()->isSuperAdmin() )
+                <li class="nav-item">
+                    <a class="nav-link with-sub" href="#">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti-user sidemenu-icon"></i>
+                        <span class="sidemenu-label">Admins</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-sub-item">
+                            <a class="nav-sub-link" href="{{route('admins.index')}}">Admin list</a>
+                        </li>
+                        <li class="nav-sub-item">
+                            <a class="nav-sub-link" href="{{route('roles.index')}}">Roles</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if ((Auth::user()->isAdmin() && Auth::user()->can('Category')) || Auth::user()->isSuperAdmin() )
+                <li class="nav-item">
+                    <a class="nav-link with-sub" href="#0">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti-list sidemenu-icon"></i>
+                        <span class="sidemenu-label">Categories</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-sub-item">
+                            <a class="nav-sub-link" href="{{route('categories.index')}}">Category list</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if ((Auth::user()->isAdmin() && Auth::user()->can('User')) || Auth::user()->isSuperAdmin() )
+                <li class="nav-item">
+                    <a class="nav-link with-sub" href="#0">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti-user sidemenu-icon"></i>
+                        <span class="sidemenu-label">User management</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="nav-sub-item">
+                            <a class="nav-sub-link" href="{{route('users.index')}}">User list</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if ((Auth::user()->isAdmin() && Auth::user()->can('Setting')) || Auth::user()->isSuperAdmin() )
+                <li class="nav-item">
+                    <a class="nav-link with-sub" href="#0">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti-settings sidemenu-icon"></i>
+                        <span class="sidemenu-label">Settings</span>
+                        <i class="angle fe fe-chevron-right"></i>
+                    </a>
+                    <ul class="nav-sub">
+                        @foreach($setting_groups as $group)
+                            <li class="nav-sub-item">
+                                <a class="nav-sub-link" href="{{route('settings.show',$group->name)}}">{{$group->name}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endif
+            </ul>
+        </div>
+    </div>
+    <!-- End Sidemenu -->        <!-- Main Header-->
+    <div class="main-header side-header sticky">
+        <div class="container-fluid">
+            <div class="main-header-left">
+                <a class="main-header-menu-icon" href="#" id="mainSidebarToggle"><span></span></a>
+            </div>
+            <div class="main-header-center">
+                <div class="responsive-logo">
+                    <a href="index.html"><img src="{{url('panel/assets/img/brand/logo.png')}}" class="mobile-logo" alt="logo"></a>
+                    <a href="index.html"><img src="{{url('panel/assets/img/brand/logo-light.png')}}" class="mobile-logo-dark" alt="logo"></a>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <select class="form-control select2-no-search">
+                            <option label="All categories">
+                            </option>
+                            <option value="IT Projects">
+                                IT Projects
+                            </option>
+                            <option value="Business Case">
+                                Business Case
+                            </option>
+                            <option value="Microsoft Project">
+                                Microsoft Project
+                            </option>
+                            <option value="Risk Management">
+                                Risk Management
+                            </option>
+                            <option value="Team Building">
+                                Team Building
+                            </option>
+                        </select>
+                    </div>
+                    <input type="search" class="form-control" placeholder="Search for anything...">
+                    <button class="btn search-btn"><i class="fe fe-search"></i></button>
                 </div>
             </div>
-        </form>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{URL::to('/')}}/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+            <div class="main-header-right">
+                <div class="dropdown header-search">
+                    <a class="nav-link icon header-search">
+                        <i class="fe fe-search header-icons"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="main-form-search p-2">
+                            <div class="input-group">
+                                <div class="input-group-btn search-panel">
+                                    <select class="form-control select2-no-search">
+                                        <option label="All categories">
+                                        </option>
+                                        <option value="IT Projects">
+                                            IT Projects
+                                        </option>
+                                        <option value="Business Case">
+                                            Business Case
+                                        </option>
+                                        <option value="Microsoft Project">
+                                            Microsoft Project
+                                        </option>
+                                        <option value="Risk Management">
+                                            Risk Management
+                                        </option>
+                                        <option value="Team Building">
+                                            Team Building
+                                        </option>
+                                    </select>
+                                </div>
+                                <input type="search" class="form-control" placeholder="Search for anything...">
+                                <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
                             </div>
                         </div>
-                        <!-- Message End -->
+                    </div>
+                </div>
+                <div class="dropdown d-md-flex">
+                    <a class="nav-link icon full-screen-link" href="#">
+                        <i class="fe fe-maximize fullscreen-button fullscreen header-icons"></i>
+                        <i class="fe fe-minimize fullscreen-button exit-fullscreen header-icons"></i>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{URL::to('/')}}/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+                <div class="dropdown main-header-notification">
+                    <a class="nav-link icon" href="#">
+                        <i class="fe fe-bell header-icons"></i>
+                        <span class="badge badge-danger nav-link-badge">4</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="header-navheading">
+                            <p class="main-notification-text">You have 1 unread notification<span class="badge badge-pill badge-primary ml-3">View all</span></p>
+                        </div>
+                        <div class="main-notification-list">
+                            <div class="media new">
+                                <div class="main-img-user online"><img alt="avatar" src="{{url('panel/assets/img/users/5.jpg')}}"></div>
+                                <div class="media-body">
+                                    <p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="main-img-user"><img alt="avatar" src="{{url('panel/assets/img/users/2.jpg')}}"></div>
+                                <div class="media-body">
+                                    <p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13 02:56am</span>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="main-img-user online"><img alt="avatar" src="{{url('panel/assets/img/users/3.jpg')}}"></div>
+                                <div class="media-body">
+                                    <p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12 10:40pm</span>
+                                </div>
                             </div>
                         </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{URL::to('/')}}/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
+                        <div class="dropdown-footer">
+                            <a href="#">View All Notifications</a>
                         </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
                 </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
+                <div class="main-header-notification">
+                    <a class="nav-link icon" href="#">
+                        <i class="fe fe-message-square header-icons"></i>
+                        <span class="badge badge-success nav-link-badge">6</span>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
+                </div>
+                <div class="dropdown main-profile-menu">
+                    <a class="d-flex" href="#">
+                        <span class="main-img-user" ><img alt="avatar" src="{{url(auth()->user()->profile())}}"></span>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-                        class="fas fa-th-large"></i></a>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="{{route('home')}}" class="brand-link">
-            <img src="{{URL::to('/').setting('logo')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
-            <span class="brand-text font-weight-light">{{setting('name')}}</span>
-        </a>
-
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{URL::to('/').Auth::user()->profile()}}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">{{Auth::user()->name}}</a>
-                </div>
-            </div>
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-{{--                    {{dd(Auth::user()->hasPermission(\App\Models\Permission::find(2)))}}--}}
-                    @if ((Auth::user()->isAdmin() && Auth::user()->can('Admin')) || Auth::user()->isSuperAdmin() )
-                    <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link @yield('admins')">
-                            <i class="fas fa-user-shield"></i>
-                            <p>
-                                Admins
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                    <div class="dropdown-menu">
+                        <div class="header-navheading">
+                            <h6 class="main-notification-title">{{auth()->user()->name}}</h6>
+                            <p class="main-notification-text">Web Designer</p>
+                        </div>
+                        <a class="dropdown-item border-top" href="#">
+                            <i class="fe fe-user"></i> My Profile
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.index')}}" class="nav-link @yield('admins_list')">
-                                    <p>Admins</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('roles.index')}}" class="nav-link @yield('roles')">
-                                    <p>Roles</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @endif
-                    @if ((Auth::user()->isAdmin() && Auth::user()->can('Category')) || Auth::user()->isSuperAdmin() )
-                        <li class="nav-item has-treeview ">
-                            <a href="#" class="nav-link @yield('Categories')">
-                                <i class="fas fa-clipboard-list"></i>
-                                <p>
-                                    Categories
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{route('categories.index')}}" class="nav-link @yield('Category')">
-                                            <p>Category list</p>
-                                        </a>
-                                    </li>
-                            </ul>
-                        </li>
-                    @endif
-                    @if ((Auth::user()->isAdmin() && Auth::user()->can('User')) || Auth::user()->isSuperAdmin() )
-                        <li class="nav-item has-treeview ">
-                            <a href="#" class="nav-link @yield('User')">
-                                <i class="fas fa-users"></i>
-                                <p>
-                                    Users
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('users.index')}}" class="nav-link @yield('Users')">
-                                        <p>Users</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-
-                    @if ((Auth::user()->isAdmin() && Auth::user()->can('Setting')) || Auth::user()->isSuperAdmin() )
-                        <li class="nav-item has-treeview ">
-                            <a href="#" class="nav-link @yield('Setting')">
-                                <i class="fas fa-cogs"></i>
-                                <p>
-                                    Settings
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                @foreach($setting_groups as $group)
-                                    <li class="nav-item">
-                                        <a href="{{route('settings.show',$group->id)}}" class="nav-link @yield($group->name)">
-                                            <p>{{$group->name}}</p>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endif
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-danger" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="#">
+                            <i class="fe fe-edit"></i> Edit Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fe fe-settings"></i> Account Settings
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fe fe-settings"></i> Support
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fe fe-compass"></i> Activity
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>{{ __('Logout') }}</p>
+                           document.getElementById('logout-form').submit();"
+                        >
+                            <i class="fe fe-power"></i> Sign Out
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-{{--                        <a href="#" class="nav-link btn btn-danger">--}}
-{{--                            <i class="fas fa-sign-out-alt"></i>--}}
-{{--                            <i class="nav-icon fas fa-th"></i>--}}
-{{--                            <p >--}}
-{{--                                Logout--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
+                    </div>
+                </div>
+                <div class="dropdown d-md-flex header-settings">
+                    <a href="#" class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
+                        <i class="fe fe-align-right header-icons"></i>
+                    </a>
+                </div>
+                <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                        aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
+                </button><!-- Navresponsive closed -->
+            </div>
         </div>
-        <!-- /.sidebar -->
-    </aside>
-
+    </div>
+    <!-- End Main Header-->		<!-- Mobile-header -->
+    <div class="mobile-main-header">
+        <div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark  ">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <div class="d-flex order-lg-2 ml-auto">
+                    <div class="dropdown header-search">
+                        <a class="nav-link icon header-search">
+                            <i class="fe fe-search header-icons"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="main-form-search p-2">
+                                <div class="input-group">
+                                    <div class="input-group-btn search-panel">
+                                        <select class="form-control select2-no-search">
+                                            <option label="All categories">
+                                            </option>
+                                            <option value="IT Projects">
+                                                IT Projects
+                                            </option>
+                                            <option value="Business Case">
+                                                Business Case
+                                            </option>
+                                            <option value="Microsoft Project">
+                                                Microsoft Project
+                                            </option>
+                                            <option value="Risk Management">
+                                                Risk Management
+                                            </option>
+                                            <option value="Team Building">
+                                                Team Building
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <input type="search" class="form-control" placeholder="Search for anything...">
+                                    <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown ">
+                        <a class="nav-link icon full-screen-link">
+                            <i class="fe fe-maximize fullscreen-button fullscreen header-icons"></i>
+                            <i class="fe fe-minimize fullscreen-button exit-fullscreen header-icons"></i>
+                        </a>
+                    </div>
+                    <div class="dropdown main-header-notification">
+                        <a class="nav-link icon" href="#">
+                            <i class="fe fe-bell header-icons"></i>
+                            <span class="badge badge-danger nav-link-badge">4</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="header-navheading">
+                                <p class="main-notification-text">You have 1 unread notification<span class="badge badge-pill badge-primary ml-3">View all</span></p>
+                            </div>
+                            <div class="main-notification-list">
+                                <div class="media new">
+                                    <div class="main-img-user online"><img alt="avatar" src="{{url('panel/assets/img/users/5.jpg')}}"></div>
+                                    <div class="media-body">
+                                        <p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="main-img-user"><img alt="avatar" src="{{url('panel/assets/img/users/2.jpg')}}"></div>
+                                    <div class="media-body">
+                                        <p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13 02:56am</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="main-img-user online"><img alt="avatar" src="{{url('panel/assets/img/users/3.jpg')}}"></div>
+                                    <div class="media-body">
+                                        <p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12 10:40pm</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-header-notification mt-2">
+                        <a class="nav-link icon" href="#">
+                            <i class="fe fe-message-square header-icons"></i>
+                            <span class="badge badge-success nav-link-badge">6</span>
+                        </a>
+                    </div>
+                    <div class="dropdown main-profile-menu">
+                        <a class="d-flex" href="#">
+                            <span class="main-img-user" ><img alt="avatar" src="{{url('panel/assets/img/users/1.jpg')}}"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="header-navheading">
+                                <h6 class="main-notification-title">{{auth()->user()->name}}</h6>
+                                <p class="main-notification-text">Web Designer</p>
+                            </div>
+                            <a class="dropdown-item border-top" href="#">
+                                <i class="fe fe-user"></i> My Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fe fe-edit"></i> Edit Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fe fe-settings"></i> Account Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fe fe-settings"></i> Support
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fe fe-compass"></i> Activity
+                            </a>
+                            <a class="dropdown-item" href="signin.html">
+                                <i class="fe fe-power"></i> Sign Out
+                            </a>
+                        </div>
+                    </div>
+                    <div class="dropdown  header-settings">
+                        <a href="#" class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
+                            <i class="fe fe-align-right header-icons"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile-header closed -->
+    <!-- Main Content-->
     @yield('content')
+    <!-- End Main Content-->
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
+    <!-- Main Footer-->
+    <div class="main-footer text-center">
+        <div class="container">
+            <div class="row row-sm">
+                <div class="col-md-12">
+                    <span>Copyright © {{date('Y')}} <a href="#">{{setting('name')}}</a>. Designed and developed by <a href="https://www.ultimatesoft.co/">UltimateSoft Co</a> All rights reserved.</span>
+                </div>
+            </div>
         </div>
-    </aside>
-    <!-- /.control-sidebar -->
-
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-           Design and Develope : <a href="https://ahmadrezaghanbari.ir">A.Ghanbari</a>
+    </div>
+    <!--End Footer-->				<!-- Sidebar -->
+    <div class="sidebar sidebar-right sidebar-animate">
+        <div class="sidebar-icon">
+            <a href="#" class="text-right float-right text-dark fs-20" data-toggle="sidebar-right" data-target=".sidebar-right"><i class="fe fe-x"></i></a>
         </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2020-{{Date('Y')}} <a href="{{setting('url')}}">{{setting('name')}}</a>.</strong> All rights reserved.
-    </footer>
+        <div class="sidebar-body">
+            <h5>Todo</h5>
+            <div class="d-flex p-3">
+                <label class="ckbox"><input checked  type="checkbox"><span>Hangout With friends</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top">
+                <label class="ckbox"><input type="checkbox"><span>Prepare for presentation</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top">
+                <label class="ckbox"><input type="checkbox"><span>Prepare for presentation</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top">
+                <label class="ckbox"><input checked type="checkbox"><span>System Updated</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top">
+                <label class="ckbox"><input type="checkbox"><span>Do something more</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top">
+                <label class="ckbox"><input  type="checkbox"><span>System Updated</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top">
+                <label class="ckbox"><input  type="checkbox"><span>Find an Idea</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <div class="d-flex p-3 border-top mb-0">
+                <label class="ckbox"><input  type="checkbox"><span>Project review</span></label>
+                <span class="ml-auto">
+							<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
+							<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
+						</span>
+            </div>
+            <h5>Overview</h5>
+            <div class="p-4">
+                <div class="main-traffic-detail-item">
+                    <div>
+                        <span>Founder &amp; CEO</span> <span>24</span>
+                    </div>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-xs wd-20p" role="progressbar"></div>
+                    </div><!-- progress -->
+                </div>
+                <div class="main-traffic-detail-item">
+                    <div>
+                        <span>UX Designer</span> <span>1</span>
+                    </div>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="15" class="progress-bar progress-bar-xs bg-secondary wd-15p" role="progressbar"></div>
+                    </div><!-- progress -->
+                </div>
+                <div class="main-traffic-detail-item">
+                    <div>
+                        <span>Recruitment</span> <span>87</span>
+                    </div>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" class="progress-bar progress-bar-xs bg-success wd-45p" role="progressbar"></div>
+                    </div><!-- progress -->
+                </div>
+                <div class="main-traffic-detail-item">
+                    <div>
+                        <span>Software Engineer</span> <span>32</span>
+                    </div>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-xs bg-info wd-25p" role="progressbar"></div>
+                    </div><!-- progress -->
+                </div>
+                <div class="main-traffic-detail-item">
+                    <div>
+                        <span>Project Manager</span> <span>32</span>
+                    </div>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-xs bg-danger wd-25p" role="progressbar"></div>
+                    </div><!-- progress -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Sidebar -->
 </div>
-<!-- ./wrapper -->
+<!-- End Page -->
 
+<!-- Back-to-top -->
+<a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
+@jquery
+@toastr_js
+@toastr_render
+<!-- Jquery js-->
+<script src="{{url('panel/assets/plugins/jquery/jquery.min.js')}}"></script>
+
+<!-- Bootstrap js-->
+<script src="{{url('panel/assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{url('panel/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+
+<!-- Select2 js-->
+<script src="{{url('panel/assets/plugins/select2/js/select2.min.js')}}"></script>
+
+<!-- Perfect-scrollbar js -->
+<script src="{{url('panel/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+
+<!-- Sidemenu js -->
+<script src="{{url('panel/assets/plugins/sidemenu/sidemenu.js')}}"></script>
+
+<!-- Sidebar js -->
+<script src="{{url('panel/assets/plugins/sidebar/sidebar.js')}}"></script>
+
+<!-- Internal Chart.Bundle js-->
+<script src="{{url('panel/assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+
+<!-- Peity js-->
+<script src="{{url('panel/assets/plugins/peity/jquery.peity.min.js')}}"></script>
+
+<!-- Internal Morris js -->
+<script src="{{url('panel/assets/plugins/raphael/raphael.min.js')}}"></script>
+<script src="{{url('panel/assets/plugins/morris.js/morris.min.js')}}"></script>
+
+<!-- Circle Progress js-->
+<script src="{{url('panel/assets/js/circle-progress.min.js')}}"></script>
+<script src="{{url('panel/assets/js/chart-circle.js')}}"></script>
+
+<!-- Internal Dashboard js-->
+<script src="{{url('panel/assets/js/index.js')}}"></script>
+
+<!-- Sticky js -->
+<script src="{{url('panel/assets/js/sticky.js')}}"></script>
+
+<!-- Custom js -->
+<script src="{{url('panel/assets/js/custom.js')}}"></script>
+
+<!-- Switcher js -->
+<script src="{{url('panel/assets/switcher/js/switcher.js')}}"></script>
 <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="{{URL::to('/').'/plugins/jquery/jquery.min.js'}}"></script>
-
-<!-- Bootstrap 4 -->
-<script src="{{URL::to('/').'/plugins/bootstrap/js/bootstrap.bundle.min.js'}}"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{URL::to('/').'/dist/js/adminlte.min.js'}}"></script>
-
-<!-- jQuery -->
+<!-- DataTables -->
 <script src="{{URL::to('/').'/plugins/datatables/jquery.dataTables.min.js'}}"></script>
 <script src="{{URL::to('/').'/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'}}"></script>
 <script src="{{URL::to('/').'/plugins/datatables-responsive/js/dataTables.responsive.min.js'}}"></script>
 <script src="{{URL::to('/').'/plugins/datatables-responsive/js/responsive.bootstrap4.min.js'}}"></script>
+
 <script>
     $(function () {
-      $("#table").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
+        $("#table").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
     });
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+    $("textarea").each(function(){
+        CKEDITOR.replace( this );
     });
-  </script>
+</script>
+@foreach ($errors->all() as $error)
+    <script>
+        toastr.error('{{$error}}')
+    </script>
+    <script>
 
-<script src="{{URL::to('/')}}/dist/js/demo.js"></script>
-<!-- image uploader -->
-<script type="text/javascript" src="{{URL::to('/')}}/image_uploader/image_uploader.min.js"></script>
-<!-- Tags input -->
-<script src="{{URL::to('/')}}/tagsinput/dist/bootstrap-tagsinput.min.js"></script>
-<script src="{{URL::to('/')}}/tagsinput/dist/bootstrap-tagsinput/bootstrap-tagsinput-angular.min.js"></script>
-
-<!-- Page script -->
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+@endforeach
 @yield('js')
 </body>
+
 </html>

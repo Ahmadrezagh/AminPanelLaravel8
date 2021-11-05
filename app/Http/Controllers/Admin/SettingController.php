@@ -62,11 +62,13 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
-         $group = SettingGroup::findOrFail($id);
-         return view('admin.settings.index',compact('group'));
-
+         $group = SettingGroup::query()->where('name','=',$name)->first();
+         if($group){
+             return view('admin.settings.index',compact('group'));
+         }
+         abort(404);
     }
 
     /**

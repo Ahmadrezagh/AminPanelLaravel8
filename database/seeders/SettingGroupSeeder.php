@@ -18,7 +18,6 @@ class SettingGroupSeeder extends Seeder
             'Website',
             'About us',
             'Contact us',
-            'Seo',
         ];
         foreach ($groups as $group)
         {
